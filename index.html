@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,nosnippet,noodp,noarchive,noimageindex">
+		<title>POZa Linią</title>
+		  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
+			<link rel="icon" href="favicon.jpg">
+
+		<style>
+body {
+	max-width: 1700px;
+	margin: auto;
+	padding: 10px;
+	gap: 1rem;
+	font-family: "Computer Modern Concrete";
+	font-size: 16px;
+}
+.content {
+	display: flex;
+	max-width: 1700px;
+	min-height: 100vh;
+	justify-items: center;
+	align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+	.content {
+		flex-direction: column;
+	}
+}
+
+main {
+	flex-grow: 1;
+}
+a:link,a:visited {
+	color: #4084B8;
+}
+#release01 .groups {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+#release01 h3 {
+	letter-spacing: 4px;
+	margin: 0;
+	font-size: 1.25rem;
+}
+#release01 a {
+	text-decoration: none;
+}
+#release01 a:hover .fst {
+	display: inline-block;
+	transform: translate(0, -0.5rem);
+}
+#release01 a:hover .snd {
+	display: inline-block;
+	transform: translate(0, 0.5rem);
+}
+#release01 a:hover .sep {
+	display: inline-block;
+	transform: rotate(15deg);
+}
+#release01 a > span {
+	transition: transform 100ms ease-in;
+}
+#release01 .groups section {
+	display: flex;
+	flex-direction: row;
+}
+#release01 .groups section .no {
+	font-size: 1.25rem;
+}
+#release01 .groups section > .sep {
+	flex-grow: 1;
+	border-bottom: 4px dotted;
+	transform: translate(0, -5px);
+}
+footer dt {
+	font-weight: 900;
+}
+#bg {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	left: 0;
+	top: 0;
+}
+		</style>
+	</head>
+	<body>
+		<canvas id="bg"></canvas>
+		<div class="content">
+			<header>
+				<img src="logo.jpg" style="max-width: 30vw">
+			</header>
+			<main id="release01">
+				<h2 style="border-bottom: 5px solid #febd59">Wydanie I</h2>
+				<p><time datetime="2025-05-24">Wydane 24.05.2025</time></p>
+
+
+				<div class="groups">
+					<section>
+						<h3><a href="1/1/"><span class="fst">PIONY</span><span class="sep">//</span><span class="snd">POZIOMY</span></a></h3>
+						<div class="sep"></div>
+						<div class="no">01</div>
+					</section>
+
+					<section>
+						<h3><a href="1/2/"><span class="fst">PUNKTY</span><span class="sep">→</span><span class="snd">SKUPISKA</span></a></h3>
+						<div class="sep"></div>
+						<span class="no">32</span>
+					</section>
+
+					<section>
+						<h3><a href=""><span class="fst">PROSTE</span><span class="sep">=</span><span class="snd">(Z)ŁAMANE</span></a></h3>
+						<div class="sep"></div>
+						<div class="no">60</div>
+					</section>
+
+					<section>
+						<h3><a href=""><span class="fst">FUNKCJE</span><span class="sep">&amp;</span><span class="snd">FALE</span></a></h3>
+						<div class="sep"></div>
+						<div class="no">78</div>
+					</section>
+					<section>
+						<H3><A HREF=""><span class="fst">DODATEK A</span><span class="sep">:&nbsp;</span><span class="snd">LISTA OSÓB AUTORSKICH</span></A></H3>
+						<div class="sep"></div>
+						<div class="no">90</div>
+					</section>
+					<section>
+						<H3><A HREF="1/"><span class="fst">SPIS</span><span class="sep">&nbsp;</span><span class="snd">TREŚCI</span></A></H3>
+						<div class="sep"></div>
+						<div class="no">95</div>
+					</section>
+				</div>
+			</main>
+		</div>
+		<footer style="padding-left: 10vw; margin-top: 1rem; border-top: 1px dotted">
+			<dl>
+				<dt>POZa Linią</dt>
+				<dd>Czasopismo literackie. Poezja, proza, teksty krytyczne</dd>
+
+				<dt>Skład</dt>
+				<dd><a href="">Osoba Pierwsza</a></dd>
+				<dd><a href="">Osoba Druga</a></dd>
+				<dd><a href="">Osoba (N-1)-sza</a></dd>
+				<dd><a href="">Osoba N-ta</a></dd>
+
+				<dt>Kontakt</dt>
+				<dd><a href="">pozalinia@gmail.com</a></dd>
+				<dd><a href="">facebook/czasopismo.pozalinia</a></dd>
+
+				<dt><a href="">Mapa strony</a></dt>
+			</dl>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.min.js"></script>
+		<script>
+			let points = [];
+
+			function add_random() {
+				const SPEED = 0.0005;
+				let a1 = Math.random() * Math.PI * 2;
+				let a2 = Math.random() * Math.PI * 2;
+				let vx1 = SPEED * Math.cos(a1);
+				let vy1 = SPEED * Math.sin(a1);
+				let vx2 = SPEED * Math.cos(a2);
+				let vy2 = SPEED * Math.sin(a2);
+
+				points.push({
+					x1: Math.random(), y1: Math.random(),
+					x2: Math.random(), y2: Math.random(),
+					vx1, vy1,
+					vx2, vy2,
+				});
+			}
+
+			function setup() {
+				createCanvas(windowWidth, windowHeight, P2D, document.getElementById('bg'));
+				for (let i = 0; i < 8; ++i) {
+					add_random();
+				}
+				noLoop();
+			}
+
+			function keyPressed(ev) {
+				if (ev.key === "s") {
+					if (isLooping()) noLoop(); else loop();
+				}
+			}
+
+			function draw() {
+				if (!isLooping()) return;
+
+				background('white');
+				noFill();
+
+				for (let i = 0; i < points.length; i++) {
+					update(points[i]);
+					stroke(150);
+					circle(points[i].x1 * width, points[i].y1 * height, 10);
+					circle(points[i].x2 * width, points[i].y2 * height, 10);
+
+					stroke(200);
+					line(points[i].x1 * width, points[i].y1 * height,
+							 points[i].x2 * width, points[i].y2 * height);
+				}
+			}
+
+
+			function update(p) {
+				p.x1 += p.vx1;
+				p.y1 += p.vy1;
+				p.x2 += p.vx2;
+				p.y2 += p.vy2;
+				if (p.x1 < 0) { p.x1 = 0; p.vx1 = -p.vx1; }
+				if (p.y1 < 0) { p.y1 = 0; p.vy1 = -p.vy1; }
+				if (p.x2 < 0) { p.x2 = 0; p.vx2 = -p.vx2; }
+				if (p.y1 < 0) { p.y1 = 0; p.vy1 = -p.vy1; }
+				if (p.x1 > 1) { p.x1 = 1; p.vx1 = -p.vx1; }
+				if (p.y1 > 1) { p.y1 = 1; p.vy1 = -p.vy1; }
+				if (p.x2 > 1) { p.x2 = 1; p.vx2 = -p.vx2; }
+				if (p.y1 > 1) { p.y1 = 1; p.vy1 = -p.vy1; }
+			}
+		</script>
+	</body>
+</html>
